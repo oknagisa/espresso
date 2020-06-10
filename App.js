@@ -3,6 +3,7 @@ import InfoPage from './info-page';
 import HomePage from './home-page';
 import {StyleSheet, View} from 'react-native';
 
+
 const App: () => React$Node = () => {
   return (
     <>
