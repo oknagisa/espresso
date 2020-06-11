@@ -4,7 +4,7 @@ import {StyleSheet, TextInput, View, Image} from 'react-native';
 const HomePage = () => {
   return (
     <View style={styles.sectionStyle}>
-      <Image style={styles.searchImage}/>
+      <Image style={styles.searchImage} />
       <TextInput style={styles.textInput} placeholder={'Search'} />
     </View>
   );
