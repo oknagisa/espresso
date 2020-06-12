@@ -1,15 +1,14 @@
 import React from 'react';
-import InfoPage from './info-page';
-import HomePage from './home-page';
-import {StyleSheet, View} from 'react-native';
 
-const App: () => React$Node = () => {
+import { StyleSheet, View} from 'react-native';
+import SearchPage from './js/components/SearchPage/SearchPage';
+
+const App = () => {
   return (
     <>
-      <View style={styles.header}>
-        <HomePage />
+      <View>
+        <SearchPage />
       </View>
-      <InfoPage name={'Amul'} country={'India'} basicInfo={''} />
     </>
   );
 };
@@ -17,8 +16,8 @@ const App: () => React$Node = () => {
 const styles = StyleSheet.create({
   header: {
     // backgroundColor: 'black',
-    minHeight: 50,
-  },
+    minHeight: 50
+  }
 });
 
 export default App;

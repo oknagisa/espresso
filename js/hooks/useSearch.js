@@ -1,25 +1,28 @@
-import {useState} from 'react';
-export function useSearch(searchKey) {
-  const [list, setList] = useState([]);
-  const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(false);
+import {useState, useEffect} from 'react';
+import {search} from '../data-layer';
 
-  if (search !== searchKey) {
-    setLoading(true);
-    setSearch(searchKey);
-    setTimeout(() => {
-      setList([
-        {
-          id: 'test',
-          name: 'Kurkute Farms',
-          description:
-            'From the house of Kurkutwadi, seeped from the fresh waters of Kurkute dam. Best fruits and veggies in the whole wide world',
-          country: 'India',
-          industry: 'Agro',
-        },
-      ]);
-      setLoading(false);
-    }, 2000);
+export function useSearch() {
+  const [state, setState] = useState({
+    loading: false,
+    data: [],
+    searchText: ''
+  });
+  const handleSearch = (searchText) => {
+    console.log('Searching ', searchText)
+    setState({
+      loading: true,
+      data: [],
+      searchText: state.searchText
+    })
+    search(searchText).then(data =>
+      setState({
+        loading: false,
+        data,
+        searchText: state.searchText
+      })
+    );
   }
-  return {loading, list};
+  console.log('Returning', { ...state, search: handleSearch })
+  return { ...state, search: handleSearch}
 }
+

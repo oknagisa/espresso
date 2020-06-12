@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const InfoPage = ({name, country, basicInfo}) => {
+const ListItem = ({name, country, basicInfo}) => {
   return (
     <View>
       <Text style={styles.brandName}>{name}</Text>
@@ -14,8 +14,8 @@ const InfoPage = ({name, country, basicInfo}) => {
 
 const styles = StyleSheet.create({
   brandName: {
-    backgroundColor: Colors.lighter,
-  },
+    backgroundColor: Colors.lighter
+  }
 });
 
-export default InfoPage;
+export default ListItem;
