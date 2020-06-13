@@ -8,7 +8,6 @@ export function useSearch() {
     searchText: ''
   });
   const handleSearch = searchText => {
-    console.log('Searching ', searchText);
     setState({
       loading: true,
       data: [],
