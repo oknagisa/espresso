@@ -25,5 +25,8 @@ const data = [
 
 export const search = searchText =>
   new Promise(res => {
-    setTimeout(() => res(data.filter(ob => ob.name.includes(searchText))), 1000) 
+    setTimeout(
+      () => res(data.filter(ob => ob.name.includes(searchText))),
+      1000
+    );
   });

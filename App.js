@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import SearchPage from './js/components/SearchPage/SearchPage';
 
 const App = () => {

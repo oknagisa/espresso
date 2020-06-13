@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {search} from '../data-layer';
 
 export function useSearch() {
@@ -7,13 +7,14 @@ export function useSearch() {
     data: [],
     searchText: ''
   });
-  const handleSearch = (searchText) => {
-    console.log('Searching ', searchText)
+  const handleSearch = searchText => {
+    console.log('Searching ', searchText);
     setState({
       loading: true,
       data: [],
       searchText: state.searchText
-    })
+    });
+
     search(searchText).then(data =>
       setState({
         loading: false,
@@ -21,8 +22,6 @@ export function useSearch() {
         searchText: state.searchText
       })
     );
-  }
-  console.log('Returning', { ...state, search: handleSearch })
-  return { ...state, search: handleSearch}
+  };
+  return {...state, search: handleSearch};
 }
-
