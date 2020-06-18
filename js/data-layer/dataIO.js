@@ -10,4 +10,3 @@ export const getData = () =>
 export const setDataVersion = version =>
   AsyncStorage.setItem('data_version', version);
 export const getDataVersion = () => AsyncStorage.getItem('data_version');
-
