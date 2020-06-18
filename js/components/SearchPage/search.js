@@ -1,27 +1,16 @@
 import React from 'react';
-import {StyleSheet, TextInput, View, Image, Text} from 'react-native';
-import {useSearch} from '../../hooks/useSearch';
+import {StyleSheet, TextInput, View, Image} from 'react-native';
 
-const SearchPage = () => {
-  const {data, loading, search} = useSearch();
+const SearchPage = ({search}) => {
   return (
-    <>
-      <View style={styles.sectionStyle}>
-        <Image style={styles.searchImage} />
-        <TextInput
-          style={styles.textInput}
-          placeholder={'Search'}
-          onChangeText={search}
-        />
-      </View>
-      <View>
-        {loading ? (
-          <Text>Loading...</Text>
-        ) : (
-          (data && data.map(item => <Text>{item.name}</Text>)) || null
-        )}
-      </View>
-    </>
+    <View style={styles.sectionStyle}>
+      <Image style={styles.searchImage} />
+      <TextInput
+        style={styles.textInput}
+        placeholder={'Search'}
+        onChangeText={search}
+      />
+    </View>
   );
 };
 
