@@ -1,26 +1,36 @@
 import {useState} from 'react';
-import {search} from '../data-layer';
+import {search, logError} from '../data-layer';
 
+const initialState = {
+  loading: false,
+  error: false,
+  data: [],
+  searchText: ''
+};
 export function useSearch() {
   const [state, setState] = useState({
-    loading: false,
-    data: [],
-    searchText: ''
+    ...initialState
   });
   const handleSearch = searchText => {
-    setState({
-      loading: true,
-      data: [],
-      searchText: state.searchText
-    });
-
-    search(searchText).then(data =>
+    try {
       setState({
-        loading: false,
-        data,
+        loading: true,
+        error: false,
+        data: [],
         searchText: state.searchText
-      })
-    );
+      });
+
+      search(searchText).then(data =>
+        setState({
+          loading: false,
+          error: false,
+          data,
+          searchText: state.searchText
+        })
+      );
+    } catch (e) {
+      logError(e);
+    }
   };
   return {...state, search: handleSearch};
 }

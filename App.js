@@ -5,6 +5,7 @@ import SearchPage from './js/components/SearchPage/SearchPage';
 import {useInitData} from './js/hooks/useInitData';
 
 const App = () => {
+  // Load main app data
   const {loading} = useInitData();
   return (
     <>
