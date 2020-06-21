@@ -1,19 +1,24 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Linking} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import Flag from 'react-native-flags';
 
-const Card = ({name, country, description, flag, industry }) => {
+const Card = ({name, country, description, flag, industry, source}) => {
+    const url = () => source ? source : 'https://www.google.com/search?q=' + 'brand ' + name.replace(' ', '+')
     return (
         <View style={styles.card}>
             <Text style={styles.brandName}>{name}</Text>
             <View style={styles.countryContainer}>
                 <Text style={styles.country}>{country}</Text>
-                {flag ? <Flag style={styles.flag} code={flag} size={32}/> : null }
+                {flag ? <Flag style={styles.flag} code={flag} size={32}/> : null}
             </View>
-            {industry ? <Text style = {styles.industry}>{industry}</Text> : null }
+            {industry ? <Text style={styles.industry}>{industry}</Text> : null}
             <ReadMore numberOfLines={2}>
                 <Text>{description}</Text>
+                <Text style={{color: 'blue'}}
+                      onPress={() => Linking.openURL(url())}>
+                    Source
+                </Text>
             </ReadMore>
         </View>
     );
