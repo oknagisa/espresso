@@ -3,7 +3,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import Flag from 'react-native-flags';
 
-const Card = ({name, country, description, flag}) => {
+const Card = ({name, country, description, flag, industry }) => {
     return (
         <View style={styles.card}>
             <Text style={styles.brandName}>{name}</Text>
@@ -11,6 +11,7 @@ const Card = ({name, country, description, flag}) => {
                 <Text style={styles.country}>{country}</Text>
                 {flag ? <Flag style={styles.flag} code={flag} size={32}/> : null }
             </View>
+            {industry ? <Text style = {styles.industry}>{industry}</Text> : null }
             <ReadMore numberOfLines={2}>
                 <Text>{description}</Text>
             </ReadMore>
@@ -49,7 +50,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         lineHeight: 35,
     },
-    basicInfo: {}
+    basicInfo: {},
+    industry: {
+        lineHeight: 30,
+    }
 });
 
 export default Card;
