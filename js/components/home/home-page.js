@@ -1,18 +1,18 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import Search from '../SearchPage/search';
 import Card from '../Card/card';
-import {useSearch} from '../../hooks/useSearch';
+import {useSearch} from '../../hooks';
 
 const HomePage = () => {
   const {data, loading, search} = useSearch();
-  const style = styles.top; //style will change according to the results
+  const style = data.length ? styles.top : styles.centered; //style will change according to the results
   return (
     <View style={style}>
       <Search search={search} />
-      <View style={styles.cardContainer}>
+    <ScrollView>
         {data?.map(({id, ...rest}) => <Card {...rest} key={id} />)}
-      </View>
+    </ScrollView>
     </View>
   );
 };
@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   centered: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   top: {},
   cardContainer: {
     overflow: 'scroll',
-    height: 1000
+    // height: 1000
   }
 });
 
