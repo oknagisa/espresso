@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView, ActivityIndicator} from 'react-native';
 import Search from '../SearchPage/search';
 import Card from '../Card/card';
 import {useSearch} from '../../hooks';
@@ -10,9 +10,9 @@ const HomePage = () => {
   return (
     <View style={style}>
       <Search search={search} />
-    <ScrollView>
-        {data?.map(({id, ...rest}) => <Card {...rest} key={id} />)}
-    </ScrollView>
+      {loading ? <ActivityIndicator size="large" color="#123085" style={styles.loading}/> :<ScrollView>
+        {data?.map(({id, ...rest}) => <Card {...rest} key={id}/>)}
+      </ScrollView>}
     </View>
   );
 };
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
   cardContainer: {
     overflow: 'scroll',
     // height: 1000
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
 

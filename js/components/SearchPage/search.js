@@ -4,12 +4,12 @@ import {StyleSheet, TextInput, View, Image} from 'react-native';
 const SearchPage = ({search}) => {
   return (
     <View style={styles.sectionStyle}>
-      <Image style={styles.searchImage} />
       <TextInput
         style={styles.textInput}
         placeholder={'Search'}
         onChangeText={search}
       />
+      {/*<Image style={styles.searchImage} source={require('../../../images/search.png')}/>*/}
     </View>
   );
 };
@@ -35,15 +35,16 @@ const styles = StyleSheet.create({
     elevation: 4
   },
   searchImage: {
-    padding: 10,
-    margin: 5,
-    height: 25,
-    width: 25,
+    margin: 10,
+    height: 18,
+    width: 18,
     resizeMode: 'stretch',
-    alignItems: 'center'
+    alignItems: 'center',
+    opacity: 0.4
   },
   textInput: {
-    flex: 1
+    flex: 1,
+    marginLeft: 10,
   }
 });
 
